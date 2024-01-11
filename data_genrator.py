@@ -30,7 +30,7 @@ def operation(for_why):
             if(i==number_of_data-1):
                 f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}','{int(cardnum)}','{address}');")
             else:
-                f.write(f"({i+1},'{name}',{dob},'{country}','{ph_num}','{email}',{int(cardnum)},'{address}'),\n")
+                f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}',{int(cardnum)},'{address}'),\n")
         elif(for_why==2):
             f.write(f"{i+1},{name},{dob},{country},{ph_num},{email},{int(cardnum)},{address}\n")
 

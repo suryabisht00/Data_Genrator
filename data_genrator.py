@@ -17,8 +17,13 @@ for_why = int(input("Press 1:- For sql query \nPress 2:- for csv \n\t:-"))
 def operation(for_why):
     for i in range(number_of_data):
         name = fake.name()
-        raw_address = fake.address()
-        address = raw_address.split("\n")[0]+" "+raw_address.split("\n")[1]
+
+        address_raw_1 =  fake.address().split("\n")[0]+" "+ fake.address().split("\n")[1]
+        try :
+            address = address_raw_1.split(",")[0] +  address_raw_1.split(",")[1]
+        except:
+            address = address_raw_1
+
         ph_num = fake.phone_number()
         country = fake.country()
         dob = fake.date_of_birth(minimum_age=20,maximum_age=40)
@@ -28,9 +33,9 @@ def operation(for_why):
         email = name.split(" ")[0]+name.split(" ")[1]+str(num)+"@email.com"
         if(for_why==1):
             if(i==number_of_data-1):
-                f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}','{int(cardnum)}','{address}');")
+                f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}','{int(cardnum)}','{address_raw_1}');")
             else:
-                f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}',{int(cardnum)},'{address}'),\n")
+                f.write(f"({i+1},'{name}','{dob}','{country}','{ph_num}','{email}',{int(cardnum)},'{address_raw_1}'),\n")
         elif(for_why==2):
             f.write(f"{i+1},{name},{dob},{country},{ph_num},{email},{int(cardnum)},{address}\n")
 
